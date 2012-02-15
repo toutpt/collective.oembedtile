@@ -30,6 +30,7 @@ setup(name='collective.oembedtile',
           'setuptools',
           'collective.oembed',
           'plone.app.tiles',
+          'plone.app.blocks',
           # -*- Extra requirements: -*-
       ],
       entry_points="""

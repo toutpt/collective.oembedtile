@@ -2,6 +2,7 @@
 <metadata>
   <version>1000</version>
   <dependencies>
-    <!--<dependency>profile-xxx:default</dependency>-->
+    <dependency>profile-plone.app.blocks:default</dependency>
+    <dependency>profile-plone.app.tiles:default</dependency>
   </dependencies>
 </metadata>

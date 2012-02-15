@@ -7,11 +7,8 @@
     xmlns:plone="http://namespaces.plone.org/plone"
     i18n_domain="collective.oembedtile">
 
-  <five:registerPackage package="." initialize=".initialize" />
-
-  <include package=".browser" />
-
   <i18n:registerTranslations directory="locales" />
+  <includeDependencies package="."/>
 
   <genericsetup:registerProfile
       name="default"
@@ -21,5 +18,15 @@
       provides="Products.GenericSetup.interfaces.EXTENSION"
       />
 
+  <plone:tile
+      name="collective.oembedtile"
+      title="OEmbed tile"
+      description="A tile display content from a link"
+      add_permission="cmf.ModifyPortalContent"
+      schema=".tile.IOEmbedTile"
+      class=".tile.OEmbedTile"
+      permission="zope2.View"
+      for="*"
+      />
 
 </configure>
