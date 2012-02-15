@@ -1,0 +1,4 @@
+<layers>
+    <layer name="collective.oembedtile"
+           interface="collective.oembedtile.browser.interfaces.ILayer" />
+</layers>
