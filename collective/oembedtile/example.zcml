@@ -9,6 +9,6 @@
     template="example.pt"
     permission="zope2.View"
     />
-  <subscriber handler=".tile.notifyModified" />
+  <subscriber handler=".example.notifyModified" />
 
 </configure>

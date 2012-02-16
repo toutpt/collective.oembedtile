@@ -1,3 +1,4 @@
+from zope import component
 from zope import interface
 from zope import schema
 from plone import tiles
@@ -21,27 +22,17 @@ class OEmbedTile(tiles.PersistentTile):
     interface.implements(IOEmbedTile) 
 
     def __call__(self):
-        import pdb;pdb.set_trace()
-        return self.get_embed()
+        return '<html><body>%s</body></html>' % self.get_embed()
 
     def get_embed(self):
         client = component.queryMultiAdapter((self.context, self.request),
-                                    name="collective.oembed.superconsumer")
+                                    name=u"collective.oembed.superconsumer")
         client.update()
+        
         kwargs = {}
-        if self.data.maxwidth:
-            kwargs['maxwidth'] = self.data.maxwidth
-        if self.data.maxheight:
-            kwargs['maxheight'] = self.data.maxheight
-        return client.get_embed(self.data.oembed_url, **kwargs)
+        maxwidth = self.data.get('maxwidth', None)
+        maxheight = self.data.get('maxheight', None)
 
+        return client.get_embed(self.data['oembed_url'], maxwidth=maxwidth,
+                                maxheight=maxheight)
 
-from zope.component import adapter
-from zope.lifecycleevent.interfaces import IObjectModifiedEvent
-from plone.tiles.interfaces import ITile
-
-
-@adapter(ITile, IObjectModifiedEvent)
-def notifyModified(tile, event):
-    # make sure the page's modified date gets updated
-    tile.__parent__.notifyModified()

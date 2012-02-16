@@ -10,14 +10,6 @@
   <i18n:registerTranslations directory="locales" />
   <includeDependencies package="."/>
 
-  <genericsetup:registerProfile
-      name="default"
-      title="collective.oembedtile"
-      directory="profiles/default"
-      description='Extension profile'
-      provides="Products.GenericSetup.interfaces.EXTENSION"
-      />
-
   <plone:tile
       name="collective.oembedtile"
       title="OEmbed tile"
