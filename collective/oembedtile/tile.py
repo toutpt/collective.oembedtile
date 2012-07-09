@@ -22,7 +22,10 @@ class OEmbedTile(tiles.PersistentTile):
     interface.implements(IOEmbedTile) 
 
     def __call__(self):
-        return '<html><body>%s</body></html>' % self.get_embed()
+        embed = self.get_embed()
+        if not embed:
+            embed = '&nbsp;'
+        return '<html><body>%s</body></html>' % embed
 
     def get_embed(self):
         client = component.queryMultiAdapter((self.context, self.request),

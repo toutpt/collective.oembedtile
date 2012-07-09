@@ -31,7 +31,17 @@
 }
 </style>
 
-<div tal:attributes="data-tile string:${context/absolute_url}/@@collective.oembedtile/hello-world" />
+
+ <div class="newsImageContainer">
+        <div tal:attributes="data-tile string:${context/absolute_url}/@@collective.oembedtile/hello-world" />
+        </div>
+
+        <div metal:define-macro="text-field-view"
+             id="parent-fieldname-text" class="stx"
+             tal:define="text text|context/getText|nothing"
+             tal:condition="text">
+            <div metal:define-slot="inside" tal:replace="structure text">The body</div>
+        </div>
 
 </div>
 </body>
